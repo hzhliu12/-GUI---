@@ -1,0 +1,62 @@
+from tkinter import *
+from tkinter import messagebox
+#   导入提示框
+from random import *
+from PIL import ImageTk, Image
+
+
+k = randint(1,20)
+root = Tk()
+# 创建窗体
+root.title("我的第一个GUI程序-猜数字")
+# 窗体名
+
+root.geometry("500x400+500+200")
+
+# 主窗口大小以及定位
+
+l1 = Label(root,text='this is tk 猜数字界面：  随机生成1到20之间的随机数，'
+                    '如果猜对了，则输出送你一朵花花，如果猜错了，则会提示偏大或偏小'
+                    '直至答案真正确为止。',bg='Navy',fg='MintCream',font=('simsun',15),wraplength=250)
+'''背景色：皇家蓝--前景色：薄荷奶油'''
+
+l1.pack()
+l2 = Label(root,text='请输入你猜的数字噢：',bg='Violet',font=('simsun',20))
+l2.pack()
+#pilImage = Image.open("flower.jpg")
+#tkImage = ImageTk.PhotoImage(image=pilImage)
+#l3 = Label(root, text='GitHub 是一个面向开源',image=tkImage, bg='lightyellow',
+  #          compound="center", font=("simsun", 20))
+#l3.pack()
+#pilImage = Image.open("flower.jpg")
+#tkImage = ImageTk.PhotoImage(image=pilImage)
+#ImageTk.PhotoImage：创建一个Tkinter兼容的照片图像（photo image）
+#l3 =Label(image=tkImage)
+#l3.pack()
+
+'''再建立一个entry文本框'''
+## 用来提供一个输入域
+text = Entry(root, width=150,font=('simsun', 30)) # 通过修改字体来修改label的高度
+text.pack()
+'''定义一个判断函数'''
+def spot():
+    bulls = text.get()
+    bulls=int(float(bulls))
+    if bulls > k:
+        messagebox.showinfo("数字偏大","再猜一次噢")
+    if bulls < k:
+        messagebox.showinfo("数字偏小","再猜一次噢")
+    if bulls == k:
+        messagebox.showinfo("Message", "送你一朵花花")
+        print("回答正确")
+'''设置按钮button'''
+
+
+btn01 = Button(root,command=spot,width=10,bg='RoyalBlue',font = ('华文隶书',25))
+btn01["text"] = "确定"
+
+btn01.pack()
+
+
+root.mainloop()
+ #  调用主键的mainloop（）方法，进入事件循环
